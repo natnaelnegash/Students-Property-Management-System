@@ -117,12 +117,67 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.UserScalarFieldEnum = {
+exports.Prisma.StudentsScalarFieldEnum = {
   id: 'id',
-  role: 'role',
-  identification: 'identification',
+  schoolId: 'schoolId',
+  fullName: 'fullName',
   email: 'email',
+  password: 'password',
+  year: 'year',
+  phone: 'phone',
+  location: 'location',
+  department: 'department',
   imageUrl: 'imageUrl',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.AdminsScalarFieldEnum = {
+  id: 'id',
+  fullName: 'fullName',
+  email: 'email',
+  password: 'password',
+  phone: 'phone',
+  role: 'role',
+  location: 'location'
+};
+
+exports.Prisma.PropertiesScalarFieldEnum = {
+  id: 'id',
+  type: 'type',
+  title: 'title',
+  description: 'description',
+  serialNumber: 'serialNumber',
+  imageUrl: 'imageUrl',
+  status: 'status',
+  studId: 'studId',
+  approvedBy: 'approvedBy',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.Property_Status_HistoriesScalarFieldEnum = {
+  id: 'id',
+  propId: 'propId',
+  updatedAt: 'updatedAt',
+  description: 'description',
+  updateApprovedBy: 'updateApprovedBy'
+};
+
+exports.Prisma.Lost_Found_ReportsScalarFieldEnum = {
+  id: 'id',
+  propId: 'propId',
+  studId: 'studId',
+  reportType: 'reportType',
+  description: 'description',
+  reportDate: 'reportDate',
+  resolved: 'resolved',
+  examinedBy: 'examinedBy'
+};
+
+exports.Prisma.Log_HistoriesScalarFieldEnum = {
+  id: 'id',
+  studId: 'studId',
+  adminId: 'adminId',
+  role: 'role',
   createdAt: 'createdAt'
 };
 
@@ -143,7 +198,12 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  Students: 'Students',
+  Admins: 'Admins',
+  Properties: 'Properties',
+  Property_Status_Histories: 'Property_Status_Histories',
+  Lost_Found_Reports: 'Lost_Found_Reports',
+  Log_Histories: 'Log_Histories'
 };
 
 /**

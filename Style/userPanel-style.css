@@ -1,0 +1,27 @@
+#logo-img{
+    width: 60px;
+}
+
+body{
+    font-family: serif;
+}
+h3{
+    font-weight: 800;
+    font-family: serif;
+}
+#user-profileImage{
+    width: 150px;
+}
+p{
+    display: inline;
+}
+.label{
+    margin-right: 15%;
+}
+.actual-data{
+    margin-right: 5%;
+    margin-left: 15%;
+}
+. Bio-data{
+    margin: 10px auto;
+}

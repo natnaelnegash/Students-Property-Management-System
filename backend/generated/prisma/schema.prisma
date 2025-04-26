@@ -1,0 +1,97 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Students {
+  id                 String               @id @default(uuid()) @db.Uuid
+  schoolId           String               @unique
+  fullName           String
+  email              String               @unique
+  password           String
+  year               String
+  phone              String               @unique
+  location           String
+  department         String
+  imageUrl           String?
+  createdAt          DateTime             @default(now())
+  properties         Properties[]
+  lost_found_reports Lost_Found_Reports[]
+  log_history        Log_Histories[]
+}
+
+model Admins {
+  id                      String                      @id @default(uuid()) @db.Uuid
+  fullName                String
+  email                   String                      @unique
+  password                String
+  phone                   String                      @unique
+  role                    String
+  location                String
+  log_history             Log_Histories[]
+  property                Properties[]
+  property_status_history Property_Status_Histories[]
+  lost_found_reports      Lost_Found_Reports[]
+}
+
+model Properties {
+  id                      String                      @id @default(uuid()) @db.Uuid
+  type                    String
+  title                   String
+  description             String
+  serialNumber            String                      @unique
+  imageUrl                String?
+  status                  String                      @default("Active")
+  studId                  String                      @db.Uuid
+  student                 Students                    @relation(fields: [studId], references: [id])
+  approvedBy              String                      @db.Uuid
+  createdAt               DateTime                    @default(now())
+  admin                   Admins                      @relation(fields: [approvedBy], references: [id])
+  property_status_history Property_Status_Histories[]
+  lost_found_reports      Lost_Found_Reports[]
+}
+
+model Property_Status_Histories {
+  id               String     @id @default(uuid()) @db.Uuid
+  propId           String     @db.Uuid
+  updatedAt        DateTime   @default(now())
+  description      String
+  updateApprovedBy String     @db.Uuid
+  property         Properties @relation(fields: [propId], references: [id])
+  admin            Admins     @relation(fields: [updateApprovedBy], references: [id])
+}
+
+model Lost_Found_Reports {
+  id          String     @id @default(uuid()) @db.Uuid
+  propId      String     @db.Uuid
+  studId      String     @db.Uuid
+  reportType  String
+  description String
+  reportDate  DateTime   @default(now())
+  resolved    Boolean
+  examinedBy  String     @db.Uuid
+  property    Properties @relation(fields: [propId], references: [id])
+  student     Students   @relation(fields: [studId], references: [id])
+  admin       Admins     @relation(fields: [examinedBy], references: [id])
+}
+
+model Log_Histories {
+  id        String   @id @default(uuid()) @db.Uuid
+  studId    String   @db.Uuid
+  adminId   String   @db.Uuid
+  role      String
+  createdAt String
+  student   Students @relation(fields: [studId], references: [id])
+  admin     Admins   @relation(fields: [adminId], references: [id])
+}

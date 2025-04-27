@@ -2686,6 +2686,7 @@ export namespace Prisma {
 
   export type AdminsMinAggregateOutputType = {
     id: string | null
+    adminId: string | null
     fullName: string | null
     email: string | null
     password: string | null
@@ -2696,6 +2697,7 @@ export namespace Prisma {
 
   export type AdminsMaxAggregateOutputType = {
     id: string | null
+    adminId: string | null
     fullName: string | null
     email: string | null
     password: string | null
@@ -2706,6 +2708,7 @@ export namespace Prisma {
 
   export type AdminsCountAggregateOutputType = {
     id: number
+    adminId: number
     fullName: number
     email: number
     password: number
@@ -2718,6 +2721,7 @@ export namespace Prisma {
 
   export type AdminsMinAggregateInputType = {
     id?: true
+    adminId?: true
     fullName?: true
     email?: true
     password?: true
@@ -2728,6 +2732,7 @@ export namespace Prisma {
 
   export type AdminsMaxAggregateInputType = {
     id?: true
+    adminId?: true
     fullName?: true
     email?: true
     password?: true
@@ -2738,6 +2743,7 @@ export namespace Prisma {
 
   export type AdminsCountAggregateInputType = {
     id?: true
+    adminId?: true
     fullName?: true
     email?: true
     password?: true
@@ -2821,6 +2827,7 @@ export namespace Prisma {
 
   export type AdminsGroupByOutputType = {
     id: string
+    adminId: string
     fullName: string
     email: string
     password: string
@@ -2848,6 +2855,7 @@ export namespace Prisma {
 
   export type AdminsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    adminId?: boolean
     fullName?: boolean
     email?: boolean
     password?: boolean
@@ -2863,6 +2871,7 @@ export namespace Prisma {
 
   export type AdminsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    adminId?: boolean
     fullName?: boolean
     email?: boolean
     password?: boolean
@@ -2873,6 +2882,7 @@ export namespace Prisma {
 
   export type AdminsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    adminId?: boolean
     fullName?: boolean
     email?: boolean
     password?: boolean
@@ -2883,6 +2893,7 @@ export namespace Prisma {
 
   export type AdminsSelectScalar = {
     id?: boolean
+    adminId?: boolean
     fullName?: boolean
     email?: boolean
     password?: boolean
@@ -2891,7 +2902,7 @@ export namespace Prisma {
     location?: boolean
   }
 
-  export type AdminsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "fullName" | "email" | "password" | "phone" | "role" | "location", ExtArgs["result"]["admins"]>
+  export type AdminsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "adminId" | "fullName" | "email" | "password" | "phone" | "role" | "location", ExtArgs["result"]["admins"]>
   export type AdminsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     log_history?: boolean | Admins$log_historyArgs<ExtArgs>
     property?: boolean | Admins$propertyArgs<ExtArgs>
@@ -2912,6 +2923,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      adminId: string
       fullName: string
       email: string
       password: string
@@ -3346,6 +3358,7 @@ export namespace Prisma {
    */
   interface AdminsFieldRefs {
     readonly id: FieldRef<"Admins", 'String'>
+    readonly adminId: FieldRef<"Admins", 'String'>
     readonly fullName: FieldRef<"Admins", 'String'>
     readonly email: FieldRef<"Admins", 'String'>
     readonly password: FieldRef<"Admins", 'String'>
@@ -8321,6 +8334,7 @@ export namespace Prisma {
 
   export const AdminsScalarFieldEnum: {
     id: 'id',
+    adminId: 'adminId',
     fullName: 'fullName',
     email: 'email',
     password: 'password',
@@ -8561,6 +8575,7 @@ export namespace Prisma {
     OR?: AdminsWhereInput[]
     NOT?: AdminsWhereInput | AdminsWhereInput[]
     id?: UuidFilter<"Admins"> | string
+    adminId?: StringFilter<"Admins"> | string
     fullName?: StringFilter<"Admins"> | string
     email?: StringFilter<"Admins"> | string
     password?: StringFilter<"Admins"> | string
@@ -8575,6 +8590,7 @@ export namespace Prisma {
 
   export type AdminsOrderByWithRelationInput = {
     id?: SortOrder
+    adminId?: SortOrder
     fullName?: SortOrder
     email?: SortOrder
     password?: SortOrder
@@ -8589,6 +8605,7 @@ export namespace Prisma {
 
   export type AdminsWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    adminId?: string
     email?: string
     phone?: string
     AND?: AdminsWhereInput | AdminsWhereInput[]
@@ -8602,10 +8619,11 @@ export namespace Prisma {
     property?: PropertiesListRelationFilter
     property_status_history?: Property_Status_HistoriesListRelationFilter
     lost_found_reports?: Lost_Found_ReportsListRelationFilter
-  }, "id" | "email" | "phone">
+  }, "id" | "adminId" | "email" | "phone">
 
   export type AdminsOrderByWithAggregationInput = {
     id?: SortOrder
+    adminId?: SortOrder
     fullName?: SortOrder
     email?: SortOrder
     password?: SortOrder
@@ -8622,6 +8640,7 @@ export namespace Prisma {
     OR?: AdminsScalarWhereWithAggregatesInput[]
     NOT?: AdminsScalarWhereWithAggregatesInput | AdminsScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"Admins"> | string
+    adminId?: StringWithAggregatesFilter<"Admins"> | string
     fullName?: StringWithAggregatesFilter<"Admins"> | string
     email?: StringWithAggregatesFilter<"Admins"> | string
     password?: StringWithAggregatesFilter<"Admins"> | string
@@ -9023,6 +9042,7 @@ export namespace Prisma {
 
   export type AdminsCreateInput = {
     id?: string
+    adminId: string
     fullName: string
     email: string
     password: string
@@ -9037,6 +9057,7 @@ export namespace Prisma {
 
   export type AdminsUncheckedCreateInput = {
     id?: string
+    adminId: string
     fullName: string
     email: string
     password: string
@@ -9051,6 +9072,7 @@ export namespace Prisma {
 
   export type AdminsUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    adminId?: StringFieldUpdateOperationsInput | string
     fullName?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
@@ -9065,6 +9087,7 @@ export namespace Prisma {
 
   export type AdminsUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    adminId?: StringFieldUpdateOperationsInput | string
     fullName?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
@@ -9079,6 +9102,7 @@ export namespace Prisma {
 
   export type AdminsCreateManyInput = {
     id?: string
+    adminId: string
     fullName: string
     email: string
     password: string
@@ -9089,6 +9113,7 @@ export namespace Prisma {
 
   export type AdminsUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    adminId?: StringFieldUpdateOperationsInput | string
     fullName?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
@@ -9099,6 +9124,7 @@ export namespace Prisma {
 
   export type AdminsUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    adminId?: StringFieldUpdateOperationsInput | string
     fullName?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
@@ -9593,6 +9619,7 @@ export namespace Prisma {
 
   export type AdminsCountOrderByAggregateInput = {
     id?: SortOrder
+    adminId?: SortOrder
     fullName?: SortOrder
     email?: SortOrder
     password?: SortOrder
@@ -9603,6 +9630,7 @@ export namespace Prisma {
 
   export type AdminsMaxOrderByAggregateInput = {
     id?: SortOrder
+    adminId?: SortOrder
     fullName?: SortOrder
     email?: SortOrder
     password?: SortOrder
@@ -9613,6 +9641,7 @@ export namespace Prisma {
 
   export type AdminsMinOrderByAggregateInput = {
     id?: SortOrder
+    adminId?: SortOrder
     fullName?: SortOrder
     email?: SortOrder
     password?: SortOrder
@@ -10847,6 +10876,7 @@ export namespace Prisma {
 
   export type AdminsCreateWithoutPropertyInput = {
     id?: string
+    adminId: string
     fullName: string
     email: string
     password: string
@@ -10860,6 +10890,7 @@ export namespace Prisma {
 
   export type AdminsUncheckedCreateWithoutPropertyInput = {
     id?: string
+    adminId: string
     fullName: string
     email: string
     password: string
@@ -10986,6 +11017,7 @@ export namespace Prisma {
 
   export type AdminsUpdateWithoutPropertyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    adminId?: StringFieldUpdateOperationsInput | string
     fullName?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
@@ -10999,6 +11031,7 @@ export namespace Prisma {
 
   export type AdminsUncheckedUpdateWithoutPropertyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    adminId?: StringFieldUpdateOperationsInput | string
     fullName?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
@@ -11077,6 +11110,7 @@ export namespace Prisma {
 
   export type AdminsCreateWithoutProperty_status_historyInput = {
     id?: string
+    adminId: string
     fullName: string
     email: string
     password: string
@@ -11090,6 +11124,7 @@ export namespace Prisma {
 
   export type AdminsUncheckedCreateWithoutProperty_status_historyInput = {
     id?: string
+    adminId: string
     fullName: string
     email: string
     password: string
@@ -11158,6 +11193,7 @@ export namespace Prisma {
 
   export type AdminsUpdateWithoutProperty_status_historyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    adminId?: StringFieldUpdateOperationsInput | string
     fullName?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
@@ -11171,6 +11207,7 @@ export namespace Prisma {
 
   export type AdminsUncheckedUpdateWithoutProperty_status_historyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    adminId?: StringFieldUpdateOperationsInput | string
     fullName?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
@@ -11254,6 +11291,7 @@ export namespace Prisma {
 
   export type AdminsCreateWithoutLost_found_reportsInput = {
     id?: string
+    adminId: string
     fullName: string
     email: string
     password: string
@@ -11267,6 +11305,7 @@ export namespace Prisma {
 
   export type AdminsUncheckedCreateWithoutLost_found_reportsInput = {
     id?: string
+    adminId: string
     fullName: string
     email: string
     password: string
@@ -11378,6 +11417,7 @@ export namespace Prisma {
 
   export type AdminsUpdateWithoutLost_found_reportsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    adminId?: StringFieldUpdateOperationsInput | string
     fullName?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
@@ -11391,6 +11431,7 @@ export namespace Prisma {
 
   export type AdminsUncheckedUpdateWithoutLost_found_reportsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    adminId?: StringFieldUpdateOperationsInput | string
     fullName?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
@@ -11441,6 +11482,7 @@ export namespace Prisma {
 
   export type AdminsCreateWithoutLog_historyInput = {
     id?: string
+    adminId: string
     fullName: string
     email: string
     password: string
@@ -11454,6 +11496,7 @@ export namespace Prisma {
 
   export type AdminsUncheckedCreateWithoutLog_historyInput = {
     id?: string
+    adminId: string
     fullName: string
     email: string
     password: string
@@ -11526,6 +11569,7 @@ export namespace Prisma {
 
   export type AdminsUpdateWithoutLog_historyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    adminId?: StringFieldUpdateOperationsInput | string
     fullName?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
@@ -11539,6 +11583,7 @@ export namespace Prisma {
 
   export type AdminsUncheckedUpdateWithoutLog_historyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    adminId?: StringFieldUpdateOperationsInput | string
     fullName?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string

@@ -133,6 +133,7 @@ exports.Prisma.StudentsScalarFieldEnum = {
 
 exports.Prisma.AdminsScalarFieldEnum = {
   id: 'id',
+  adminId: 'adminId',
   fullName: 'fullName',
   email: 'email',
   password: 'password',

@@ -20,6 +20,12 @@ const getStudent = asyncHandler(async (req, res) => {
   res.status(200).json(student);
 });
 
+const getAllProperties = asyncHandler(async (req, res) => {
+  const properties = await prisma.properties.findMany();
+  if (!properties) res.status(404).json({ message: "No properties found" });
+  res.status(200).json(properties);
+});
+
 // const createStudent = asyncHandler(async (req, res) => {
 //   const {
 //     schoolId,
@@ -75,6 +81,33 @@ const createStudent = asyncHandler(async (req, res) => {
   res.status(200).json(student);
 });
 
+const createProperty = asyncHandler(async (req, res) => {
+  const { type, title, description, serialNumber, studId } = req.body;
+  const student = await prisma.Students.findUnique({
+    where: {
+      schoolId: studId,
+    },
+  });
+  if (!student) res.status(404).json({ message: "Student not found" });
+  const admin = await prisma.Admins.findUnique({
+    where: {
+      adminId: req.user.adminId,
+    },
+  });
+  if (!admin) res.status(404).json({ message: "Admin not found" });
+  const property = await prisma.Properties.create({
+    data: {
+      type: type,
+      title: title,
+      description: description,
+      serialNumber: serialNumber,
+      studId: student.id,
+      approvedBy: admin.id,
+    },
+  });
+  res.status(200).json(property);
+});
+
 const updateStudent = asyncHandler(async (req, res) => {
   const schoolId = req.params;
   const { fullName, email, password, year, phone, location, department } =
@@ -109,7 +142,9 @@ const deleteStudent = asyncHandler(async (req, res) => {
 module.exports = {
   getAllStudents,
   getStudent,
+  getAllProperties,
   createStudent,
+  createProperty,
   updateStudent,
   deleteStudent,
 };

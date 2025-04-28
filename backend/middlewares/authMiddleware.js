@@ -15,12 +15,13 @@ const config = require("../config/index");
 
 const authToken = asyncHandler((req, res, next) => {
   const authHeader = req.headers["authorization"];
-  if (!authHeader) res.status(401).json({ message: "Token not found" });
+  if (!authHeader) res.status(401).json({ message: "Token not provided" });
   const token = authHeader.split(" ")[1];
-  jwt.verify(token, config.JWT_SECRET_KEY, (err, student) => {
+  jwt.verify(token, config.JWT_SECRET_ACCESS, (err, userData) => {
     if (err) return res.sendStatus(403);
+    req.user = userData;
+    next();
   });
-  next();
 });
 
 module.exports = { authToken };

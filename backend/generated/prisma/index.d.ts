@@ -43,6 +43,11 @@ export type Lost_Found_Reports = $Result.DefaultSelection<Prisma.$Lost_Found_Rep
  * 
  */
 export type Log_Histories = $Result.DefaultSelection<Prisma.$Log_HistoriesPayload>
+/**
+ * Model Refresh_Tokens
+ * 
+ */
+export type Refresh_Tokens = $Result.DefaultSelection<Prisma.$Refresh_TokensPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -228,6 +233,16 @@ export class PrismaClient<
     * ```
     */
   get log_Histories(): Prisma.Log_HistoriesDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.refresh_Tokens`: Exposes CRUD operations for the **Refresh_Tokens** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Refresh_Tokens
+    * const refresh_Tokens = await prisma.refresh_Tokens.findMany()
+    * ```
+    */
+  get refresh_Tokens(): Prisma.Refresh_TokensDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -673,7 +688,8 @@ export namespace Prisma {
     Properties: 'Properties',
     Property_Status_Histories: 'Property_Status_Histories',
     Lost_Found_Reports: 'Lost_Found_Reports',
-    Log_Histories: 'Log_Histories'
+    Log_Histories: 'Log_Histories',
+    Refresh_Tokens: 'Refresh_Tokens'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -692,7 +708,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "students" | "admins" | "properties" | "property_Status_Histories" | "lost_Found_Reports" | "log_Histories"
+      modelProps: "students" | "admins" | "properties" | "property_Status_Histories" | "lost_Found_Reports" | "log_Histories" | "refresh_Tokens"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1140,6 +1156,80 @@ export namespace Prisma {
           }
         }
       }
+      Refresh_Tokens: {
+        payload: Prisma.$Refresh_TokensPayload<ExtArgs>
+        fields: Prisma.Refresh_TokensFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.Refresh_TokensFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Refresh_TokensPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.Refresh_TokensFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Refresh_TokensPayload>
+          }
+          findFirst: {
+            args: Prisma.Refresh_TokensFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Refresh_TokensPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.Refresh_TokensFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Refresh_TokensPayload>
+          }
+          findMany: {
+            args: Prisma.Refresh_TokensFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Refresh_TokensPayload>[]
+          }
+          create: {
+            args: Prisma.Refresh_TokensCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Refresh_TokensPayload>
+          }
+          createMany: {
+            args: Prisma.Refresh_TokensCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.Refresh_TokensCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Refresh_TokensPayload>[]
+          }
+          delete: {
+            args: Prisma.Refresh_TokensDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Refresh_TokensPayload>
+          }
+          update: {
+            args: Prisma.Refresh_TokensUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Refresh_TokensPayload>
+          }
+          deleteMany: {
+            args: Prisma.Refresh_TokensDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.Refresh_TokensUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.Refresh_TokensUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Refresh_TokensPayload>[]
+          }
+          upsert: {
+            args: Prisma.Refresh_TokensUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Refresh_TokensPayload>
+          }
+          aggregate: {
+            args: Prisma.Refresh_TokensAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateRefresh_Tokens>
+          }
+          groupBy: {
+            args: Prisma.Refresh_TokensGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Refresh_TokensGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.Refresh_TokensCountArgs<ExtArgs>
+            result: $Utils.Optional<Refresh_TokensCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1230,6 +1320,7 @@ export namespace Prisma {
     property_Status_Histories?: Property_Status_HistoriesOmit
     lost_Found_Reports?: Lost_Found_ReportsOmit
     log_Histories?: Log_HistoriesOmit
+    refresh_Tokens?: Refresh_TokensOmit
   }
 
   /* Types for Logging */
@@ -4034,7 +4125,7 @@ export namespace Prisma {
     id: string
     type: string
     title: string
-    description: string
+    description: string | null
     serialNumber: string
     imageUrl: string | null
     status: string
@@ -4150,7 +4241,7 @@ export namespace Prisma {
       id: string
       type: string
       title: string
-      description: string
+      description: string | null
       serialNumber: string
       imageUrl: string | null
       status: string
@@ -8302,6 +8393,962 @@ export namespace Prisma {
 
 
   /**
+   * Model Refresh_Tokens
+   */
+
+  export type AggregateRefresh_Tokens = {
+    _count: Refresh_TokensCountAggregateOutputType | null
+    _min: Refresh_TokensMinAggregateOutputType | null
+    _max: Refresh_TokensMaxAggregateOutputType | null
+  }
+
+  export type Refresh_TokensMinAggregateOutputType = {
+    id: string | null
+    refresh_token: string | null
+  }
+
+  export type Refresh_TokensMaxAggregateOutputType = {
+    id: string | null
+    refresh_token: string | null
+  }
+
+  export type Refresh_TokensCountAggregateOutputType = {
+    id: number
+    refresh_token: number
+    _all: number
+  }
+
+
+  export type Refresh_TokensMinAggregateInputType = {
+    id?: true
+    refresh_token?: true
+  }
+
+  export type Refresh_TokensMaxAggregateInputType = {
+    id?: true
+    refresh_token?: true
+  }
+
+  export type Refresh_TokensCountAggregateInputType = {
+    id?: true
+    refresh_token?: true
+    _all?: true
+  }
+
+  export type Refresh_TokensAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Refresh_Tokens to aggregate.
+     */
+    where?: Refresh_TokensWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Refresh_Tokens to fetch.
+     */
+    orderBy?: Refresh_TokensOrderByWithRelationInput | Refresh_TokensOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: Refresh_TokensWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Refresh_Tokens from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Refresh_Tokens.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Refresh_Tokens
+    **/
+    _count?: true | Refresh_TokensCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Refresh_TokensMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Refresh_TokensMaxAggregateInputType
+  }
+
+  export type GetRefresh_TokensAggregateType<T extends Refresh_TokensAggregateArgs> = {
+        [P in keyof T & keyof AggregateRefresh_Tokens]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRefresh_Tokens[P]>
+      : GetScalarType<T[P], AggregateRefresh_Tokens[P]>
+  }
+
+
+
+
+  export type Refresh_TokensGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: Refresh_TokensWhereInput
+    orderBy?: Refresh_TokensOrderByWithAggregationInput | Refresh_TokensOrderByWithAggregationInput[]
+    by: Refresh_TokensScalarFieldEnum[] | Refresh_TokensScalarFieldEnum
+    having?: Refresh_TokensScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Refresh_TokensCountAggregateInputType | true
+    _min?: Refresh_TokensMinAggregateInputType
+    _max?: Refresh_TokensMaxAggregateInputType
+  }
+
+  export type Refresh_TokensGroupByOutputType = {
+    id: string
+    refresh_token: string
+    _count: Refresh_TokensCountAggregateOutputType | null
+    _min: Refresh_TokensMinAggregateOutputType | null
+    _max: Refresh_TokensMaxAggregateOutputType | null
+  }
+
+  type GetRefresh_TokensGroupByPayload<T extends Refresh_TokensGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Refresh_TokensGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Refresh_TokensGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Refresh_TokensGroupByOutputType[P]>
+            : GetScalarType<T[P], Refresh_TokensGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type Refresh_TokensSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    refresh_token?: boolean
+  }, ExtArgs["result"]["refresh_Tokens"]>
+
+  export type Refresh_TokensSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    refresh_token?: boolean
+  }, ExtArgs["result"]["refresh_Tokens"]>
+
+  export type Refresh_TokensSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    refresh_token?: boolean
+  }, ExtArgs["result"]["refresh_Tokens"]>
+
+  export type Refresh_TokensSelectScalar = {
+    id?: boolean
+    refresh_token?: boolean
+  }
+
+  export type Refresh_TokensOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "refresh_token", ExtArgs["result"]["refresh_Tokens"]>
+
+  export type $Refresh_TokensPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Refresh_Tokens"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      refresh_token: string
+    }, ExtArgs["result"]["refresh_Tokens"]>
+    composites: {}
+  }
+
+  type Refresh_TokensGetPayload<S extends boolean | null | undefined | Refresh_TokensDefaultArgs> = $Result.GetResult<Prisma.$Refresh_TokensPayload, S>
+
+  type Refresh_TokensCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<Refresh_TokensFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Refresh_TokensCountAggregateInputType | true
+    }
+
+  export interface Refresh_TokensDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Refresh_Tokens'], meta: { name: 'Refresh_Tokens' } }
+    /**
+     * Find zero or one Refresh_Tokens that matches the filter.
+     * @param {Refresh_TokensFindUniqueArgs} args - Arguments to find a Refresh_Tokens
+     * @example
+     * // Get one Refresh_Tokens
+     * const refresh_Tokens = await prisma.refresh_Tokens.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends Refresh_TokensFindUniqueArgs>(args: SelectSubset<T, Refresh_TokensFindUniqueArgs<ExtArgs>>): Prisma__Refresh_TokensClient<$Result.GetResult<Prisma.$Refresh_TokensPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Refresh_Tokens that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {Refresh_TokensFindUniqueOrThrowArgs} args - Arguments to find a Refresh_Tokens
+     * @example
+     * // Get one Refresh_Tokens
+     * const refresh_Tokens = await prisma.refresh_Tokens.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends Refresh_TokensFindUniqueOrThrowArgs>(args: SelectSubset<T, Refresh_TokensFindUniqueOrThrowArgs<ExtArgs>>): Prisma__Refresh_TokensClient<$Result.GetResult<Prisma.$Refresh_TokensPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Refresh_Tokens that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Refresh_TokensFindFirstArgs} args - Arguments to find a Refresh_Tokens
+     * @example
+     * // Get one Refresh_Tokens
+     * const refresh_Tokens = await prisma.refresh_Tokens.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends Refresh_TokensFindFirstArgs>(args?: SelectSubset<T, Refresh_TokensFindFirstArgs<ExtArgs>>): Prisma__Refresh_TokensClient<$Result.GetResult<Prisma.$Refresh_TokensPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Refresh_Tokens that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Refresh_TokensFindFirstOrThrowArgs} args - Arguments to find a Refresh_Tokens
+     * @example
+     * // Get one Refresh_Tokens
+     * const refresh_Tokens = await prisma.refresh_Tokens.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends Refresh_TokensFindFirstOrThrowArgs>(args?: SelectSubset<T, Refresh_TokensFindFirstOrThrowArgs<ExtArgs>>): Prisma__Refresh_TokensClient<$Result.GetResult<Prisma.$Refresh_TokensPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Refresh_Tokens that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Refresh_TokensFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Refresh_Tokens
+     * const refresh_Tokens = await prisma.refresh_Tokens.findMany()
+     * 
+     * // Get first 10 Refresh_Tokens
+     * const refresh_Tokens = await prisma.refresh_Tokens.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const refresh_TokensWithIdOnly = await prisma.refresh_Tokens.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends Refresh_TokensFindManyArgs>(args?: SelectSubset<T, Refresh_TokensFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Refresh_TokensPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Refresh_Tokens.
+     * @param {Refresh_TokensCreateArgs} args - Arguments to create a Refresh_Tokens.
+     * @example
+     * // Create one Refresh_Tokens
+     * const Refresh_Tokens = await prisma.refresh_Tokens.create({
+     *   data: {
+     *     // ... data to create a Refresh_Tokens
+     *   }
+     * })
+     * 
+     */
+    create<T extends Refresh_TokensCreateArgs>(args: SelectSubset<T, Refresh_TokensCreateArgs<ExtArgs>>): Prisma__Refresh_TokensClient<$Result.GetResult<Prisma.$Refresh_TokensPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Refresh_Tokens.
+     * @param {Refresh_TokensCreateManyArgs} args - Arguments to create many Refresh_Tokens.
+     * @example
+     * // Create many Refresh_Tokens
+     * const refresh_Tokens = await prisma.refresh_Tokens.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends Refresh_TokensCreateManyArgs>(args?: SelectSubset<T, Refresh_TokensCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Refresh_Tokens and returns the data saved in the database.
+     * @param {Refresh_TokensCreateManyAndReturnArgs} args - Arguments to create many Refresh_Tokens.
+     * @example
+     * // Create many Refresh_Tokens
+     * const refresh_Tokens = await prisma.refresh_Tokens.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Refresh_Tokens and only return the `id`
+     * const refresh_TokensWithIdOnly = await prisma.refresh_Tokens.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends Refresh_TokensCreateManyAndReturnArgs>(args?: SelectSubset<T, Refresh_TokensCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Refresh_TokensPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Refresh_Tokens.
+     * @param {Refresh_TokensDeleteArgs} args - Arguments to delete one Refresh_Tokens.
+     * @example
+     * // Delete one Refresh_Tokens
+     * const Refresh_Tokens = await prisma.refresh_Tokens.delete({
+     *   where: {
+     *     // ... filter to delete one Refresh_Tokens
+     *   }
+     * })
+     * 
+     */
+    delete<T extends Refresh_TokensDeleteArgs>(args: SelectSubset<T, Refresh_TokensDeleteArgs<ExtArgs>>): Prisma__Refresh_TokensClient<$Result.GetResult<Prisma.$Refresh_TokensPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Refresh_Tokens.
+     * @param {Refresh_TokensUpdateArgs} args - Arguments to update one Refresh_Tokens.
+     * @example
+     * // Update one Refresh_Tokens
+     * const refresh_Tokens = await prisma.refresh_Tokens.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends Refresh_TokensUpdateArgs>(args: SelectSubset<T, Refresh_TokensUpdateArgs<ExtArgs>>): Prisma__Refresh_TokensClient<$Result.GetResult<Prisma.$Refresh_TokensPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Refresh_Tokens.
+     * @param {Refresh_TokensDeleteManyArgs} args - Arguments to filter Refresh_Tokens to delete.
+     * @example
+     * // Delete a few Refresh_Tokens
+     * const { count } = await prisma.refresh_Tokens.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends Refresh_TokensDeleteManyArgs>(args?: SelectSubset<T, Refresh_TokensDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Refresh_Tokens.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Refresh_TokensUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Refresh_Tokens
+     * const refresh_Tokens = await prisma.refresh_Tokens.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends Refresh_TokensUpdateManyArgs>(args: SelectSubset<T, Refresh_TokensUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Refresh_Tokens and returns the data updated in the database.
+     * @param {Refresh_TokensUpdateManyAndReturnArgs} args - Arguments to update many Refresh_Tokens.
+     * @example
+     * // Update many Refresh_Tokens
+     * const refresh_Tokens = await prisma.refresh_Tokens.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Refresh_Tokens and only return the `id`
+     * const refresh_TokensWithIdOnly = await prisma.refresh_Tokens.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends Refresh_TokensUpdateManyAndReturnArgs>(args: SelectSubset<T, Refresh_TokensUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Refresh_TokensPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Refresh_Tokens.
+     * @param {Refresh_TokensUpsertArgs} args - Arguments to update or create a Refresh_Tokens.
+     * @example
+     * // Update or create a Refresh_Tokens
+     * const refresh_Tokens = await prisma.refresh_Tokens.upsert({
+     *   create: {
+     *     // ... data to create a Refresh_Tokens
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Refresh_Tokens we want to update
+     *   }
+     * })
+     */
+    upsert<T extends Refresh_TokensUpsertArgs>(args: SelectSubset<T, Refresh_TokensUpsertArgs<ExtArgs>>): Prisma__Refresh_TokensClient<$Result.GetResult<Prisma.$Refresh_TokensPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Refresh_Tokens.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Refresh_TokensCountArgs} args - Arguments to filter Refresh_Tokens to count.
+     * @example
+     * // Count the number of Refresh_Tokens
+     * const count = await prisma.refresh_Tokens.count({
+     *   where: {
+     *     // ... the filter for the Refresh_Tokens we want to count
+     *   }
+     * })
+    **/
+    count<T extends Refresh_TokensCountArgs>(
+      args?: Subset<T, Refresh_TokensCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Refresh_TokensCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Refresh_Tokens.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Refresh_TokensAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Refresh_TokensAggregateArgs>(args: Subset<T, Refresh_TokensAggregateArgs>): Prisma.PrismaPromise<GetRefresh_TokensAggregateType<T>>
+
+    /**
+     * Group by Refresh_Tokens.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Refresh_TokensGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends Refresh_TokensGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: Refresh_TokensGroupByArgs['orderBy'] }
+        : { orderBy?: Refresh_TokensGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, Refresh_TokensGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRefresh_TokensGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Refresh_Tokens model
+   */
+  readonly fields: Refresh_TokensFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Refresh_Tokens.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__Refresh_TokensClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Refresh_Tokens model
+   */
+  interface Refresh_TokensFieldRefs {
+    readonly id: FieldRef<"Refresh_Tokens", 'String'>
+    readonly refresh_token: FieldRef<"Refresh_Tokens", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Refresh_Tokens findUnique
+   */
+  export type Refresh_TokensFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Refresh_Tokens
+     */
+    select?: Refresh_TokensSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Refresh_Tokens
+     */
+    omit?: Refresh_TokensOmit<ExtArgs> | null
+    /**
+     * Filter, which Refresh_Tokens to fetch.
+     */
+    where: Refresh_TokensWhereUniqueInput
+  }
+
+  /**
+   * Refresh_Tokens findUniqueOrThrow
+   */
+  export type Refresh_TokensFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Refresh_Tokens
+     */
+    select?: Refresh_TokensSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Refresh_Tokens
+     */
+    omit?: Refresh_TokensOmit<ExtArgs> | null
+    /**
+     * Filter, which Refresh_Tokens to fetch.
+     */
+    where: Refresh_TokensWhereUniqueInput
+  }
+
+  /**
+   * Refresh_Tokens findFirst
+   */
+  export type Refresh_TokensFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Refresh_Tokens
+     */
+    select?: Refresh_TokensSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Refresh_Tokens
+     */
+    omit?: Refresh_TokensOmit<ExtArgs> | null
+    /**
+     * Filter, which Refresh_Tokens to fetch.
+     */
+    where?: Refresh_TokensWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Refresh_Tokens to fetch.
+     */
+    orderBy?: Refresh_TokensOrderByWithRelationInput | Refresh_TokensOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Refresh_Tokens.
+     */
+    cursor?: Refresh_TokensWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Refresh_Tokens from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Refresh_Tokens.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Refresh_Tokens.
+     */
+    distinct?: Refresh_TokensScalarFieldEnum | Refresh_TokensScalarFieldEnum[]
+  }
+
+  /**
+   * Refresh_Tokens findFirstOrThrow
+   */
+  export type Refresh_TokensFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Refresh_Tokens
+     */
+    select?: Refresh_TokensSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Refresh_Tokens
+     */
+    omit?: Refresh_TokensOmit<ExtArgs> | null
+    /**
+     * Filter, which Refresh_Tokens to fetch.
+     */
+    where?: Refresh_TokensWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Refresh_Tokens to fetch.
+     */
+    orderBy?: Refresh_TokensOrderByWithRelationInput | Refresh_TokensOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Refresh_Tokens.
+     */
+    cursor?: Refresh_TokensWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Refresh_Tokens from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Refresh_Tokens.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Refresh_Tokens.
+     */
+    distinct?: Refresh_TokensScalarFieldEnum | Refresh_TokensScalarFieldEnum[]
+  }
+
+  /**
+   * Refresh_Tokens findMany
+   */
+  export type Refresh_TokensFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Refresh_Tokens
+     */
+    select?: Refresh_TokensSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Refresh_Tokens
+     */
+    omit?: Refresh_TokensOmit<ExtArgs> | null
+    /**
+     * Filter, which Refresh_Tokens to fetch.
+     */
+    where?: Refresh_TokensWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Refresh_Tokens to fetch.
+     */
+    orderBy?: Refresh_TokensOrderByWithRelationInput | Refresh_TokensOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Refresh_Tokens.
+     */
+    cursor?: Refresh_TokensWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Refresh_Tokens from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Refresh_Tokens.
+     */
+    skip?: number
+    distinct?: Refresh_TokensScalarFieldEnum | Refresh_TokensScalarFieldEnum[]
+  }
+
+  /**
+   * Refresh_Tokens create
+   */
+  export type Refresh_TokensCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Refresh_Tokens
+     */
+    select?: Refresh_TokensSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Refresh_Tokens
+     */
+    omit?: Refresh_TokensOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Refresh_Tokens.
+     */
+    data: XOR<Refresh_TokensCreateInput, Refresh_TokensUncheckedCreateInput>
+  }
+
+  /**
+   * Refresh_Tokens createMany
+   */
+  export type Refresh_TokensCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Refresh_Tokens.
+     */
+    data: Refresh_TokensCreateManyInput | Refresh_TokensCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Refresh_Tokens createManyAndReturn
+   */
+  export type Refresh_TokensCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Refresh_Tokens
+     */
+    select?: Refresh_TokensSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Refresh_Tokens
+     */
+    omit?: Refresh_TokensOmit<ExtArgs> | null
+    /**
+     * The data used to create many Refresh_Tokens.
+     */
+    data: Refresh_TokensCreateManyInput | Refresh_TokensCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Refresh_Tokens update
+   */
+  export type Refresh_TokensUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Refresh_Tokens
+     */
+    select?: Refresh_TokensSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Refresh_Tokens
+     */
+    omit?: Refresh_TokensOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Refresh_Tokens.
+     */
+    data: XOR<Refresh_TokensUpdateInput, Refresh_TokensUncheckedUpdateInput>
+    /**
+     * Choose, which Refresh_Tokens to update.
+     */
+    where: Refresh_TokensWhereUniqueInput
+  }
+
+  /**
+   * Refresh_Tokens updateMany
+   */
+  export type Refresh_TokensUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Refresh_Tokens.
+     */
+    data: XOR<Refresh_TokensUpdateManyMutationInput, Refresh_TokensUncheckedUpdateManyInput>
+    /**
+     * Filter which Refresh_Tokens to update
+     */
+    where?: Refresh_TokensWhereInput
+    /**
+     * Limit how many Refresh_Tokens to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Refresh_Tokens updateManyAndReturn
+   */
+  export type Refresh_TokensUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Refresh_Tokens
+     */
+    select?: Refresh_TokensSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Refresh_Tokens
+     */
+    omit?: Refresh_TokensOmit<ExtArgs> | null
+    /**
+     * The data used to update Refresh_Tokens.
+     */
+    data: XOR<Refresh_TokensUpdateManyMutationInput, Refresh_TokensUncheckedUpdateManyInput>
+    /**
+     * Filter which Refresh_Tokens to update
+     */
+    where?: Refresh_TokensWhereInput
+    /**
+     * Limit how many Refresh_Tokens to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Refresh_Tokens upsert
+   */
+  export type Refresh_TokensUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Refresh_Tokens
+     */
+    select?: Refresh_TokensSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Refresh_Tokens
+     */
+    omit?: Refresh_TokensOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Refresh_Tokens to update in case it exists.
+     */
+    where: Refresh_TokensWhereUniqueInput
+    /**
+     * In case the Refresh_Tokens found by the `where` argument doesn't exist, create a new Refresh_Tokens with this data.
+     */
+    create: XOR<Refresh_TokensCreateInput, Refresh_TokensUncheckedCreateInput>
+    /**
+     * In case the Refresh_Tokens was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<Refresh_TokensUpdateInput, Refresh_TokensUncheckedUpdateInput>
+  }
+
+  /**
+   * Refresh_Tokens delete
+   */
+  export type Refresh_TokensDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Refresh_Tokens
+     */
+    select?: Refresh_TokensSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Refresh_Tokens
+     */
+    omit?: Refresh_TokensOmit<ExtArgs> | null
+    /**
+     * Filter which Refresh_Tokens to delete.
+     */
+    where: Refresh_TokensWhereUniqueInput
+  }
+
+  /**
+   * Refresh_Tokens deleteMany
+   */
+  export type Refresh_TokensDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Refresh_Tokens to delete
+     */
+    where?: Refresh_TokensWhereInput
+    /**
+     * Limit how many Refresh_Tokens to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Refresh_Tokens without action
+   */
+  export type Refresh_TokensDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Refresh_Tokens
+     */
+    select?: Refresh_TokensSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Refresh_Tokens
+     */
+    omit?: Refresh_TokensOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -8396,6 +9443,14 @@ export namespace Prisma {
   };
 
   export type Log_HistoriesScalarFieldEnum = (typeof Log_HistoriesScalarFieldEnum)[keyof typeof Log_HistoriesScalarFieldEnum]
+
+
+  export const Refresh_TokensScalarFieldEnum: {
+    id: 'id',
+    refresh_token: 'refresh_token'
+  };
+
+  export type Refresh_TokensScalarFieldEnum = (typeof Refresh_TokensScalarFieldEnum)[keyof typeof Refresh_TokensScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -8656,7 +9711,7 @@ export namespace Prisma {
     id?: UuidFilter<"Properties"> | string
     type?: StringFilter<"Properties"> | string
     title?: StringFilter<"Properties"> | string
-    description?: StringFilter<"Properties"> | string
+    description?: StringNullableFilter<"Properties"> | string | null
     serialNumber?: StringFilter<"Properties"> | string
     imageUrl?: StringNullableFilter<"Properties"> | string | null
     status?: StringFilter<"Properties"> | string
@@ -8673,7 +9728,7 @@ export namespace Prisma {
     id?: SortOrder
     type?: SortOrder
     title?: SortOrder
-    description?: SortOrder
+    description?: SortOrderInput | SortOrder
     serialNumber?: SortOrder
     imageUrl?: SortOrderInput | SortOrder
     status?: SortOrder
@@ -8694,7 +9749,7 @@ export namespace Prisma {
     NOT?: PropertiesWhereInput | PropertiesWhereInput[]
     type?: StringFilter<"Properties"> | string
     title?: StringFilter<"Properties"> | string
-    description?: StringFilter<"Properties"> | string
+    description?: StringNullableFilter<"Properties"> | string | null
     imageUrl?: StringNullableFilter<"Properties"> | string | null
     status?: StringFilter<"Properties"> | string
     studId?: UuidFilter<"Properties"> | string
@@ -8710,7 +9765,7 @@ export namespace Prisma {
     id?: SortOrder
     type?: SortOrder
     title?: SortOrder
-    description?: SortOrder
+    description?: SortOrderInput | SortOrder
     serialNumber?: SortOrder
     imageUrl?: SortOrderInput | SortOrder
     status?: SortOrder
@@ -8729,7 +9784,7 @@ export namespace Prisma {
     id?: UuidWithAggregatesFilter<"Properties"> | string
     type?: StringWithAggregatesFilter<"Properties"> | string
     title?: StringWithAggregatesFilter<"Properties"> | string
-    description?: StringWithAggregatesFilter<"Properties"> | string
+    description?: StringNullableWithAggregatesFilter<"Properties"> | string | null
     serialNumber?: StringWithAggregatesFilter<"Properties"> | string
     imageUrl?: StringNullableWithAggregatesFilter<"Properties"> | string | null
     status?: StringWithAggregatesFilter<"Properties"> | string
@@ -8928,6 +9983,43 @@ export namespace Prisma {
     adminId?: UuidWithAggregatesFilter<"Log_Histories"> | string
     role?: StringWithAggregatesFilter<"Log_Histories"> | string
     createdAt?: StringWithAggregatesFilter<"Log_Histories"> | string
+  }
+
+  export type Refresh_TokensWhereInput = {
+    AND?: Refresh_TokensWhereInput | Refresh_TokensWhereInput[]
+    OR?: Refresh_TokensWhereInput[]
+    NOT?: Refresh_TokensWhereInput | Refresh_TokensWhereInput[]
+    id?: UuidFilter<"Refresh_Tokens"> | string
+    refresh_token?: StringFilter<"Refresh_Tokens"> | string
+  }
+
+  export type Refresh_TokensOrderByWithRelationInput = {
+    id?: SortOrder
+    refresh_token?: SortOrder
+  }
+
+  export type Refresh_TokensWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: Refresh_TokensWhereInput | Refresh_TokensWhereInput[]
+    OR?: Refresh_TokensWhereInput[]
+    NOT?: Refresh_TokensWhereInput | Refresh_TokensWhereInput[]
+    refresh_token?: StringFilter<"Refresh_Tokens"> | string
+  }, "id">
+
+  export type Refresh_TokensOrderByWithAggregationInput = {
+    id?: SortOrder
+    refresh_token?: SortOrder
+    _count?: Refresh_TokensCountOrderByAggregateInput
+    _max?: Refresh_TokensMaxOrderByAggregateInput
+    _min?: Refresh_TokensMinOrderByAggregateInput
+  }
+
+  export type Refresh_TokensScalarWhereWithAggregatesInput = {
+    AND?: Refresh_TokensScalarWhereWithAggregatesInput | Refresh_TokensScalarWhereWithAggregatesInput[]
+    OR?: Refresh_TokensScalarWhereWithAggregatesInput[]
+    NOT?: Refresh_TokensScalarWhereWithAggregatesInput | Refresh_TokensScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"Refresh_Tokens"> | string
+    refresh_token?: StringWithAggregatesFilter<"Refresh_Tokens"> | string
   }
 
   export type StudentsCreateInput = {
@@ -9137,7 +10229,7 @@ export namespace Prisma {
     id?: string
     type: string
     title: string
-    description: string
+    description?: string | null
     serialNumber: string
     imageUrl?: string | null
     status?: string
@@ -9152,7 +10244,7 @@ export namespace Prisma {
     id?: string
     type: string
     title: string
-    description: string
+    description?: string | null
     serialNumber: string
     imageUrl?: string | null
     status?: string
@@ -9167,7 +10259,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     serialNumber?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
@@ -9182,7 +10274,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     serialNumber?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
@@ -9197,7 +10289,7 @@ export namespace Prisma {
     id?: string
     type: string
     title: string
-    description: string
+    description?: string | null
     serialNumber: string
     imageUrl?: string | null
     status?: string
@@ -9210,7 +10302,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     serialNumber?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
@@ -9221,7 +10313,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     serialNumber?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
@@ -9410,6 +10502,41 @@ export namespace Prisma {
     adminId?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
     createdAt?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type Refresh_TokensCreateInput = {
+    id?: string
+    refresh_token: string
+  }
+
+  export type Refresh_TokensUncheckedCreateInput = {
+    id?: string
+    refresh_token: string
+  }
+
+  export type Refresh_TokensUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    refresh_token?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type Refresh_TokensUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    refresh_token?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type Refresh_TokensCreateManyInput = {
+    id?: string
+    refresh_token: string
+  }
+
+  export type Refresh_TokensUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    refresh_token?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type Refresh_TokensUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    refresh_token?: StringFieldUpdateOperationsInput | string
   }
 
   export type UuidFilter<$PrismaModel = never> = {
@@ -9796,6 +10923,21 @@ export namespace Prisma {
     adminId?: SortOrder
     role?: SortOrder
     createdAt?: SortOrder
+  }
+
+  export type Refresh_TokensCountOrderByAggregateInput = {
+    id?: SortOrder
+    refresh_token?: SortOrder
+  }
+
+  export type Refresh_TokensMaxOrderByAggregateInput = {
+    id?: SortOrder
+    refresh_token?: SortOrder
+  }
+
+  export type Refresh_TokensMinOrderByAggregateInput = {
+    id?: SortOrder
+    refresh_token?: SortOrder
   }
 
   export type PropertiesCreateNestedManyWithoutStudentInput = {
@@ -10469,7 +11611,7 @@ export namespace Prisma {
     id?: string
     type: string
     title: string
-    description: string
+    description?: string | null
     serialNumber: string
     imageUrl?: string | null
     status?: string
@@ -10483,7 +11625,7 @@ export namespace Prisma {
     id?: string
     type: string
     title: string
-    description: string
+    description?: string | null
     serialNumber: string
     imageUrl?: string | null
     status?: string
@@ -10580,7 +11722,7 @@ export namespace Prisma {
     id?: UuidFilter<"Properties"> | string
     type?: StringFilter<"Properties"> | string
     title?: StringFilter<"Properties"> | string
-    description?: StringFilter<"Properties"> | string
+    description?: StringNullableFilter<"Properties"> | string | null
     serialNumber?: StringFilter<"Properties"> | string
     imageUrl?: StringNullableFilter<"Properties"> | string | null
     status?: StringFilter<"Properties"> | string
@@ -10674,7 +11816,7 @@ export namespace Prisma {
     id?: string
     type: string
     title: string
-    description: string
+    description?: string | null
     serialNumber: string
     imageUrl?: string | null
     status?: string
@@ -10688,7 +11830,7 @@ export namespace Prisma {
     id?: string
     type: string
     title: string
-    description: string
+    description?: string | null
     serialNumber: string
     imageUrl?: string | null
     status?: string
@@ -11079,7 +12221,7 @@ export namespace Prisma {
     id?: string
     type: string
     title: string
-    description: string
+    description?: string | null
     serialNumber: string
     imageUrl?: string | null
     status?: string
@@ -11093,7 +12235,7 @@ export namespace Prisma {
     id?: string
     type: string
     title: string
-    description: string
+    description?: string | null
     serialNumber: string
     imageUrl?: string | null
     status?: string
@@ -11156,7 +12298,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     serialNumber?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
@@ -11170,7 +12312,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     serialNumber?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
@@ -11223,7 +12365,7 @@ export namespace Prisma {
     id?: string
     type: string
     title: string
-    description: string
+    description?: string | null
     serialNumber: string
     imageUrl?: string | null
     status?: string
@@ -11237,7 +12379,7 @@ export namespace Prisma {
     id?: string
     type: string
     title: string
-    description: string
+    description?: string | null
     serialNumber: string
     imageUrl?: string | null
     status?: string
@@ -11337,7 +12479,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     serialNumber?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
@@ -11351,7 +12493,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     serialNumber?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
@@ -11599,7 +12741,7 @@ export namespace Prisma {
     id?: string
     type: string
     title: string
-    description: string
+    description?: string | null
     serialNumber: string
     imageUrl?: string | null
     status?: string
@@ -11628,7 +12770,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     serialNumber?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
@@ -11642,7 +12784,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     serialNumber?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
@@ -11656,7 +12798,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     serialNumber?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
@@ -11726,7 +12868,7 @@ export namespace Prisma {
     id?: string
     type: string
     title: string
-    description: string
+    description?: string | null
     serialNumber: string
     imageUrl?: string | null
     status?: string
@@ -11776,7 +12918,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     serialNumber?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
@@ -11790,7 +12932,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     serialNumber?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
@@ -11804,7 +12946,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     serialNumber?: StringFieldUpdateOperationsInput | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string

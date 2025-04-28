@@ -16,14 +16,19 @@ const authenticateStudent = asyncHandler(async (req, res) => {
   const isMatch = await bcrypt.compare(password, student.password);
   if (!isMatch) res.status(400).json({ message: "Invalid credentials" });
 
-  const token = jwt.sign(
-    { schoolId: student.schoolId },
-    config.JWT_SECRET_KEY,
+  const accessToken = jwt.sign(
+    { schoolId: student.schoolId, role: "student" },
+    config.JWT_SECRET_ACCESS,
     {
-      expiresIn: "1h",
+      expiresIn: config.ACCESS_TOKEN_EXPIRY,
     }
   );
-  res.json({ token });
+  const refreshToken = jwt.sign(
+    { schoolId: student.schoolId, role: "student" },
+    config.JWT_SECRET_REFRESH,
+    { expiresIn: config.REFRESH_TOKEN_EXPIRY }
+  );
+  res.json({ "Access Token": accessToken, "Refresh Token": refreshToken });
 });
 
 module.exports = { authenticateStudent };

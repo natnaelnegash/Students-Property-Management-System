@@ -15,10 +15,19 @@ const authenticateAdmin = asyncHandler(async (req, res) => {
   if (!admin) res.status(404).json({ message: "Profile not found" });
   const isMatch = await bcrypt.compare(password, admin.password);
   if (!isMatch) res.status(404).json({ message: "Invalid credentials" });
-  const token = jwt.sign({ adminId: adminId }, config.JWT_SECRET_KEY, {
-    expiresIn: "1h",
-  });
-  res.json({ token });
+  const accessToken = jwt.sign(
+    { adminId: adminId, role: "admin" },
+    config.JWT_SECRET_ACCESS,
+    {
+      expiresIn: config.ACCESS_TOKEN_EXPIRY,
+    }
+  );
+  const refreshToken = jwt.sign(
+    { adminId: admin.adminId, role: "admin" },
+    config.JWT_SECRET_REFRESH,
+    { expiresIn: config.REFRESH_TOKEN_EXPIRY }
+  );
+  res.json({ "Access Token": accessToken, "Refresh Token": refreshToken });
 });
 
 const signupAdmin = asyncHandler(async (req, res) => {
@@ -37,10 +46,19 @@ const signupAdmin = asyncHandler(async (req, res) => {
     },
   });
   if (!admin) res.status(400).json({ message: "Profile couldn't be created" });
-  const token = jwt.sign({ adminId: adminId }, config.JWT_SECRET_KEY, {
-    expiresIn: "1h",
-  });
-  res.json({ token });
+  const accessToken = jwt.sign(
+    { adminId: adminId, role: "admin" },
+    config.JWT_SECRET_ACCESS,
+    {
+      expiresIn: config.ACCESS_TOKEN_EXPIRY,
+    }
+  );
+  const refreshToken = jwt.sign(
+    { adminId: admin.adminId, role: "admin" },
+    config.JWT_SECRET_REFRESH,
+    { expiresIn: config.REFRESH_TOKEN_EXPIRY }
+  );
+  res.json({ "Access Token": accessToken, "Refresh Token": refreshToken });
 });
 
 module.exports = { authenticateAdmin, signupAdmin };

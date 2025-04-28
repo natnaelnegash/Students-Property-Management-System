@@ -182,6 +182,11 @@ exports.Prisma.Log_HistoriesScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.Refresh_TokensScalarFieldEnum = {
+  id: 'id',
+  refresh_token: 'refresh_token'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -204,7 +209,8 @@ exports.Prisma.ModelName = {
   Properties: 'Properties',
   Property_Status_Histories: 'Property_Status_Histories',
   Lost_Found_Reports: 'Lost_Found_Reports',
-  Log_Histories: 'Log_Histories'
+  Log_Histories: 'Log_Histories',
+  Refresh_Tokens: 'Refresh_Tokens'
 };
 
 /**

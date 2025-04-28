@@ -4,7 +4,7 @@ const studentRoutes = require("./studentRoutes");
 const adminRoutes = require("./adminRoutes");
 const authRoutes = require("./authRoutes");
 
-// router.use("/student", studentRoutes);
+router.use("/student", studentRoutes);
 router.use("/admin", adminRoutes);
 router.use("/auth", authRoutes);
 

@@ -1,6 +1,7 @@
 const { PrismaClient } = require("../generated/prisma");
 const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcrypt");
+const { uploadImage } = require("../services/cloudinary");
 const prisma = new PrismaClient();
 
 const getAllStudents = asyncHandler(async (req, res) => {
@@ -25,32 +26,6 @@ const getAllProperties = asyncHandler(async (req, res) => {
   if (!properties) res.status(404).json({ message: "No properties found" });
   res.status(200).json(properties);
 });
-
-// const createStudent = asyncHandler(async (req, res) => {
-//   const {
-//     schoolId,
-//     fullName,
-//     email,
-//     password,
-//     year,
-//     phone,
-//     location,
-//     department,
-//   } = req.body;
-//   const student = await prisma.Students.create({
-//     data: {
-//       schoolId: schoolId,
-//       fullName: fullName,
-//       email: email,
-//       password: password,
-//       year: year,
-//       phone: phone,
-//       location: location,
-//       department: department,
-//     },
-//   });
-//   res.status(200).json(student);
-// });
 
 const createStudent = asyncHandler(async (req, res) => {
   const {
@@ -83,28 +58,32 @@ const createStudent = asyncHandler(async (req, res) => {
 
 const createProperty = asyncHandler(async (req, res) => {
   const { type, title, description, serialNumber, studId } = req.body;
+  const imagePath = req.file.path;
   const student = await prisma.Students.findUnique({
     where: {
       schoolId: studId,
     },
   });
-  if (!student) res.status(404).json({ message: "Student not found" });
+  if (!student) return res.status(404).json({ message: "Student not found" });
   const admin = await prisma.Admins.findUnique({
     where: {
       adminId: req.user.adminId,
     },
   });
-  if (!admin) res.status(404).json({ message: "Admin not found" });
+  if (!admin) return res.status(404).json({ message: "Admin not found" });
+  const uploadedImage = await uploadImage(imagePath);
   const property = await prisma.Properties.create({
     data: {
       type: type,
       title: title,
       description: description,
       serialNumber: serialNumber,
+      imageUrl: uploadedImage,
       studId: student.id,
       approvedBy: admin.id,
     },
   });
+  console.log(req.file);
   res.status(200).json(property);
 });
 

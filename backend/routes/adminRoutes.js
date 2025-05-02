@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const { upload } = require("../middlewares/multer");
 const adminController = require("../controllers/adminController");
 const { authToken } = require("../middlewares/authMiddleware");
 const { authorizeRoles } = require("../middlewares/roleMiddleware");
@@ -32,6 +33,7 @@ router.post(
   "/createProperty",
   authToken,
   authorizeRoles("admin"),
+  upload.single("image"),
   adminController.createProperty
 );
 router.put(

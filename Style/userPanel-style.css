@@ -9,19 +9,16 @@ h3{
     font-weight: 800;
     font-family: serif;
 }
-#user-profileImage{
+#user-profileImage {
     width: 150px;
-}
-p{
-    display: inline;
-}
-.label{
-    margin-right: 15%;
-}
-.actual-data{
-    margin-right: 5%;
-    margin-left: 15%;
-}
-. Bio-data{
+    height: 150px; /* 🔥 Add this line */
+    background-image: url('/resources/images/gettyimages-1317804578-612x612.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
     margin: 10px auto;
 }
+.device-images{
+    
+}
+
+

@@ -1,0 +1,75 @@
+#logo-img{
+    width: 60px;
+}
+
+body{
+    font-family: serif;
+}
+h3{
+    font-weight: 800;
+    font-family: serif;
+}
+#user-profileImage {
+    width: 150px;
+    height: 150px; /* 🔥 Add this line */
+    background-image: url('/resources/images/gettyimages-1317804578-612x612.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 10px auto;
+}
+.device-images{
+    
+}
+
+
+
+
+/* user profile photo styel*/
+
+#admin-profile-photo{
+    width: 100px;
+}
+/*this is the profile photo update style*/
+    .profile-container {
+      position: relative;
+      width: 125px;
+      height: 125px;
+      margin: 20px;
+      margin: 30px auto;
+    }
+
+    .profile-photo {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #ddd;
+    }
+
+    .camera-btn {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      background-color:purple;
+      border: none;
+      border-radius: 50%;
+      padding: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .camera-btn img {
+      width: 16px;
+      height: 16px;
+    }
+
+
+#logoutbtn:hover{
+    background-color: gray;
+}
+
+
+
+

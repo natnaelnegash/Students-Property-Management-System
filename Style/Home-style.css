@@ -1,0 +1,114 @@
+ /* Container for the dropdown */
+ .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Button styling */
+  .dropbtn {
+    background-color: #1C5FB7;
+    color: white;
+    padding: 15px 24px;
+    margin: 5px 25px;
+    font-size: 16px;
+
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+  }
+
+  /* Dropdown content */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: skyblue;
+    min-width: 180px;
+    margin-right: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 6px;
+    z-index: 1;
+  }
+
+  /* Links inside dropdown */
+  .dropdown-content a {
+    color:  #1C5FB7;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border-radius: 6px;
+    font-weight: bold;
+  }
+
+  /* Hover effect on dropdown links */
+  .dropdown-content a:hover {
+    background-color: #f1f1f1;
+  }
+
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  /* Optional: button hover */
+  .dropdown:hover .dropbtn {
+    background-color: gray;
+  }
+
+  .login-btn{
+    display: flex;
+    justify-content: end;
+  }
+
+  .description{
+    display: flex;
+    justify-content: center;
+    border-radius: 25px;
+    background-color:#d9d9d9 ;
+
+    box-shadow: 0 6px 10px rgba(0,0,0,0.3);
+
+  }
+  .description:hover{
+    transform: scale(1.1);
+  }
+
+.description div h1{
+    color: #1C5FB7;
+    font-family: serif;
+    font-weight: bold;
+
+}
+.description div p{
+    font-family: sans-serif;
+   
+
+}
+  .dropdownBtn-container{
+    width: 50%;
+    display: inline-block;
+    display: flex;
+    justify-content: end;
+
+  }
+  
+  .home-log-image{
+    width: 50%;
+    display: inline-block;
+      
+  }
+  .home-log-image img{
+    width: 90px;
+    margin:5px 25px ;
+  }
+@media (min-width:768px){
+    .description{
+        display: flex;
+        justify-content: center;
+        width: 80%;
+        height: 80vh;
+        margin: 2% auto;
+      }
+
+
+}
+

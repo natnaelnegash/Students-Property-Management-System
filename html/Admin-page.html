@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/Style/admin-style.css">
+    <link rel="stylesheet" href="/src/output.css">
+</head>
+<body>
+    <!--Header section-->
+    <header> 
+        <div class="flex">
+            <img class="w-[90px]" src="/resources/logos/Astu-Logo-removebg-preview.png" alt="">
+            <h1 class="my-5 font-bold font-serif">Astu property Registery System</h1>
+        </div>
+    </header>
+    <main>
+        <!-- aside information-->
+        <aside class="aside-info">
+            <div class="profile-container">
+                <img src="/resources/images/gettyimages-1317804578-612x612.jpg" alt="Profile Photo" class="profile-photo" id="profileImage">
+                
+                <label class="camera-btn" for="fileInput">
+                  <img src="https://cdn-icons-png.flaticon.com/512/149/149217.png" alt="Camera Icon">
+                </label>
+                
+                <input type="file" id="fileInput" accept="image/*" onchange="updateProfileImage(event)">
+              </div>
+
+              <h2>Natinael Neguse</h2>
+              <p>Nati@gmail.com</p>
+              <button>EditProfile</button>
+            
+        </aside>
+        <!-- the main content section or dashboard section-->
+        <section class="dashboard-wrapper">
+            <div class="md:flex bg-[white] rounded-[15px] w-[90%] mx-[auto] mt-5">
+                <p class="w-[30%] m-8 font-bold ">Admin Panel</p>
+                <div class="w-[30%] p-1.5 my-5 mx-[auto]">
+                    <button class="w-[100%] p-10  " id="view-registered-devices">View Registered Devices</button>
+                </div>
+                <div class=" w-[30%] p-1.5 my-5 mx-[auto] ">
+                    <button class="px-2.5 py-1.5 my-5 mx-[auto]" id="logout">Logout</button>
+                </div>
+            </div>
+            <div class="md:flex justify-center flex-col items-center">
+                <!--display table to desplay registered devices from trhe database-->
+                <div class="w-[30%] bg-[white] rounded-[15px] search-container">
+                    <input type="text" placeholder="Search for student...">
+                    <img src="https://cdn-icons-png.flaticon.com/512/622/622669.png" alt="Search" class="search-icon">
+                </div>
+                <div class="w-[90%] bg-[#1C5FB7] rounded-[15px] p-[25px] notification" >
+                    <p>Recently Registered</p>
+                    <p>Missing device</p>
+                </div>
+                <div class="w-[90%] bg-[white] rounded-[15px] md:flex justify-center mt-[30px] mb-10 p-2">
+                    <button class="registerbtn">Register new Device</button>
+                    <button class="registerbtn"> Register Student</button>
+                </div>
+            
+            </div>
+        </section>
+    </main>
+    <footer></footer>
+     <!---->
+     <!---->
+    
+</body>
+</html>
+
+
+
+<!-- <table id="dataTable">
+    <thead>
+        <tr>
+             <th>ID</th>
+             <th>Name</th>
+             <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+       
+    </tbody>
+</table> -->

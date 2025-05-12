@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../Style/userPanel-style.css">
+    <link rel="stylesheet" href="../src/output.css">
+   
+</head>
+<body  class="">
+    <!----------------------------------------------Body------------------------------------------------>
+    <!--this is the header section-->
+    <header class="flex bg-[#d9d9d9] w-[94%] mx-[3%] rounded-lg py-6 my-5 shadow-2xl">
+        <!-- this the log-image and text-->
+        <div class=" flex w-[50%] mx-5 my-[auto]">
+            <img id="logo-img" src="../resources/logos/Astu-Logo-removebg-preview.png" alt="">
+            <h3 class="my-[auto] mx-2.5">ASTU Propery Management System</h3>
+        
+        </div>
+        <!--this is the logout text and icons-->
+        <div class="flex justify-end w-[50%] mx-5 my-[auto]">
+            <button id="logoutbtn" class="bg-[#1c5fb7] py-2.5 px-5 font-bold text-[white] rounded-[15px]">Logout</button>
+        </div>
+
+    </header>
+    <!-- this is the main content display section-->
+    <section class="md:flex my-5 w-[100%] px-[%3] md:justify-center " >
+
+        <!-- Profile picture and user Bio data-->
+        <div class="bg-[#1c5fb7]  md:w-[30%] ml-[3%] mr-[1.5%] rounded-[15px] shadow-2xl">
+            <!--profile Photo section-->
+            <div class="profile-container">
+                <img src="/resources/images/gettyimages-1317804578-612x612.jpg" alt="Profile Photo" class="profile-photo" id="profileImage">
+                
+                <label class="camera-btn" for="fileInput">
+                  <img src="/resources/icons/camera-solid.svg" alt="Camera Icon">
+                </label>
+                
+                <input type="file" id="fileInput" accept="image/*" onchange="updateProfileImage(event)">
+              </div>
+            <!--Bio Information-->
+            <div class="text-center text-white m-10">
+                <p class="my-5 Bio-data">Name: <span class="mx-5"> Mulualem </span></p> 
+                <p class="my-5 Bio-data">ID: <span class="mx-5"> UGR/244..... </span></p>
+                <p class="my-5  Bio-data">Department: <span class="mx-5"> CSE </span></p>
+                <p class="my-5  Bio-data">Year: <span class="mx-5"> 4th </span></p>
+            </div>
+        </div>
+        <!--property information-->
+        <div class=" bg-[white] md:w-[30%] mx-[1.5%] rounded-[15px]">
+
+            <div class="bg-[#d9d9d9] w-[70%]  rounded-[15px] mb-2.5 mx-2.5 h-[10%] text-center p-1.5 font-bold shadow-2xl">.owned properties</div>
+             <!--image and description of device 1-->
+            <div class="md:flex bg-[#d9d9d9]  rounded-[15px] h-[40%] m-2.5 shadow-2xl">
+                <div>
+                    <img class="device-images  md:w-[50%] m-5 rounded-[5px]" src="/resources/images/hp_elitebook_mobile.jpg" alt="">
+                </div>
+                <div class="m-5 p-5"><p>description</p></div>
+            
+            </div>
+            <!--image and description of device 2-->
+            <div class="md:flex bg-[#d9d9d9]  rounded-[15px] m-2.5 h-[40%] shadow-2xl ">
+                <div><img class="device-images md:w-[50%] m-5 rounded-[5px]" src="/resources/images/3-Tasten-Maus_Microsoft.jpg" alt=""></div>
+                <div class="m-5 p-5"><p>description</p></div>
+            </div>
+        </div>
+        <!--future editable free zone-->
+        <div class="bg-[#d9d9d9] py-20 md:w-[30%] ml-[1.5%] mr-[3%] rounded-[15px]"></div>
+    </section>
+    <!---->
+    <script src="/scripts/userpanel-script.js"></script>
+ 
+</body>
+</html>
